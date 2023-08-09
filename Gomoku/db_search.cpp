@@ -2,6 +2,11 @@
 #include "parameters.h"
 
 
+#include <iostream>
+
+std::ostream &info = std::cout;
+// std::ostream &debug = *(new std::ofstream);
+std::ostream &debug = std::cout;
 using namespace std;
 
 
@@ -127,4 +132,44 @@ bool db_search::dependency_stage(db_node& parent, threat_finder_package&& packag
 	threat_sequence_.pop(*node);
 	parent.children.push_back(move(node));
 	return false;
+}
+
+
+
+int main(){
+    bit_board* board;
+	board = new bit_board;
+	board->place_move(coords(0, 0),BLACK);
+	board->place_move(coords(0, 1),BLACK);
+	board->place_move(coords(0, 2),BLACK);
+	board->place_move(coords(0, 3),WHITE);
+	board->place_move(coords(0, 4),BLACK);
+	board->place_move(coords(1, 5),BLACK);
+	board->place_move(coords(2, 6),BLACK);
+	board->place_move(coords(2, 8),WHITE);
+	board->place_move(coords(5, 8),BLACK);
+	board->place_move(coords(6, 8),BLACK);
+	board->place_move(coords(9, 8),WHITE);
+	db_search engine(board);
+	
+    for(int i = 0;i < 15;i++){
+        for(int j = 0;j < 15;j++){
+            info << board->get_move(i, j) << " ";
+        }
+        info << std::endl;
+    }
+    std::optional<coords> next_move = engine.get_winning_move(BLACK, 2);
+	if(next_move){
+		info << "proof " << next_move->to_string() << std::endl;
+        board->place_move(coords(next_move->x,next_move->y),BLACK);
+	}
+	else{
+		info << "no proof" << std::endl;
+	}
+	for(int i = 0;i < 15;i++){
+        for(int j = 0;j < 15;j++){
+            info << board->get_move(i, j) << " ";
+        }
+        info << std::endl;
+    }
 }

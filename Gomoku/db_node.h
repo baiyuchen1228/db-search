@@ -6,6 +6,7 @@
 #include <cstdint>
 #include <memory>
 #include <vector>
+#include <algorithm>
 #include "threat_finder.h"
 #include "bit_board.h"
 

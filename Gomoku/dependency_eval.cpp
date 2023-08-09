@@ -2,6 +2,7 @@
 #include "bit_board.h"
 
 #include <cassert>
+#include <algorithm>
 
 
 using namespace std;
