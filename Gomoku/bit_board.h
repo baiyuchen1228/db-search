@@ -212,7 +212,7 @@ template <size_t K>
 std::array<figure, K> bit_board::uint_to_line(uint32_t line) {
 	std::array<figure, K> output;
 
-	for(int i = 0; i < K; ++i) {
+	for(int i = 0; i < (int)K; ++i) {
 		output[i] = figure((line >> (2 * i)) & 3);
 	}
 

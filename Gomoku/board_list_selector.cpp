@@ -1,4 +1,3 @@
-@@ -1,149 +0,0 @@
 #include "board_list_selector.h"
 #include "selector_helper.h"
 #include "overlap_eval.h"
